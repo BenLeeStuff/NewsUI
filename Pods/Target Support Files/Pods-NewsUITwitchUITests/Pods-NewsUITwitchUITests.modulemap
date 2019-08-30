@@ -1,0 +1,6 @@
+framework module Pods_NewsUITwitchUITests {
+  umbrella header "Pods-NewsUITwitchUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

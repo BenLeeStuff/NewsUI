@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NewsUITwitch" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NnU-Ax-HRb">
+                                <rect key="frame" x="30" y="328" width="346" height="234"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LbT-gZ-ZR2">
+                                        <rect key="frame" x="0.0" y="0.0" width="346" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="7za-RW-0oC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
+                                        <state key="normal" title="News">
+                                            <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ZQ7-FM-wkl"/>
+                                        </connections>
+                                    </button>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Hsw-bf-BMd">
+                                        <rect key="frame" x="0.0" y="80" width="346" height="154"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ICf-Qn-kVA">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="chatCellId" id="xIa-X8-A9d" customClass="ChatCell" customModule="NewsUITwitch" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="interactiveNewsCellId" id="nHb-E2-HHf" customClass="InteractiveNewsCell" customModule="NewsUITwitch" customModuleProvider="target">
+                                                <rect key="frame" x="74" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="systemMessagesCellId" id="TRm-sH-qtK" customClass="SystemMessagesCell" customModule="NewsUITwitch" customModuleProvider="target">
+                                                <rect key="frame" x="148" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCellId" id="EJV-aW-egs" customClass="UserCell" customModule="NewsUITwitch" customModuleProvider="target">
+                                                <rect key="frame" x="222" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="noticeIssedCellId" id="6Kl-E9-CGr" customClass="NoticeIssuedCell" customModule="NewsUITwitch" customModuleProvider="target">
+                                                <rect key="frame" x="296" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="Hsw-bf-BMd" secondAttribute="trailing" id="B7y-5Z-Gwq"/>
+                                    <constraint firstItem="Hsw-bf-BMd" firstAttribute="top" secondItem="LbT-gZ-ZR2" secondAttribute="bottom" id="D8Q-Tj-ROU"/>
+                                    <constraint firstItem="LbT-gZ-ZR2" firstAttribute="top" secondItem="NnU-Ax-HRb" secondAttribute="top" id="Nz1-9B-cAO"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hsw-bf-BMd" secondAttribute="bottom" id="WXa-ze-D3d"/>
+                                    <constraint firstItem="Hsw-bf-BMd" firstAttribute="leading" secondItem="NnU-Ax-HRb" secondAttribute="leading" id="Y7M-1d-eGA"/>
+                                    <constraint firstItem="LbT-gZ-ZR2" firstAttribute="leading" secondItem="NnU-Ax-HRb" secondAttribute="leading" id="YE0-1E-n8s"/>
+                                    <constraint firstAttribute="trailing" secondItem="LbT-gZ-ZR2" secondAttribute="trailing" id="esf-2z-6t9"/>
+                                    <constraint firstAttribute="height" constant="80" id="tmu-KK-vgh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94168025255203247" green="0.95671409368515015" blue="0.96862393617630005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="NnU-Ax-HRb" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="308" id="6ul-pP-XJL"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="NnU-Ax-HRb" secondAttribute="trailing" constant="38" id="UPk-40-weI"/>
+                            <constraint firstItem="NnU-Ax-HRb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="txc-cQ-IBj"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="newsButton" destination="LbT-gZ-ZR2" id="MyF-2c-Q8s"/>
+                        <outlet property="newsCollectionView" destination="Hsw-bf-BMd" id="adb-4n-s6a"/>
+                        <outlet property="newsView" destination="NnU-Ax-HRb" id="h3l-A9-hFF"/>
+                        <outlet property="newsViewHeightConstraint" destination="tmu-KK-vgh" id="g0Q-JH-jLR"/>
+                        <outlet property="newsViewTopConstraint" destination="6ul-pP-XJL" id="ija-wN-sTg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="47.826086956521742" y="24.456521739130437"/>
+        </scene>
+    </scenes>
+</document>

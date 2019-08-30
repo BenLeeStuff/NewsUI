@@ -1,0 +1,6 @@
+framework module Pods_NewsUITwitch {
+  umbrella header "Pods-NewsUITwitch-umbrella.h"
+
+  export *
+  module * { export * }
+}
