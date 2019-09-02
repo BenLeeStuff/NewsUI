@@ -17,9 +17,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var newsView: UIView!
     @IBOutlet weak var newsButton: UIButton!
-    
     @IBOutlet weak var newsCollectionView: UICollectionView!
-    
     @IBOutlet weak var newsViewHeightConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var newsViewTopConstraint: NSLayoutConstraint!
@@ -47,6 +45,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.shimmerNewsButton()
         }) { (true) in
             print("stage1 complete")
+            self.animateCellsToPopUp()
         }
     }
     
@@ -65,15 +64,38 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     func animateCellsToPopUp() {
+        let indexPath = IndexPath(row: 0, section: 0)
+        guard let chatCell = self.newsCollectionView.cellForItem(at: indexPath) as? ChatCell else {return}
+        chatCell.underlyingView.isHidden = false
+        chatCell.underlyingView.popIn(fromScale: 0, duration: 0.5, delay: 0.2, completion: nil)
         
+//        UIView.animate(withDuration: 0.3, animations: {
+//            let indexPath = IndexPath(row: 0, section: 0)
+//            guard let chatCell = self.newsCollectionView.cellForItem(at: indexPath) as? ChatCell else {return}
+//            chatCell.underlyingView.isHidden = false
+//            chatCell.underlyingView.popIn(fromScale: 0, duration: 0.3, delay: 0.2, completion: nil)
+//
+//
+//        }) { (true) in
+//            print("cell animation complete")
+//        }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch indexPath.item {
         case 0:
             let chatCell = newsCollectionView.dequeueReusableCell(withReuseIdentifier: "chatCellId", for: indexPath) as! ChatCell
-            chatCell.isHidden = true
+            //chatCell.isHidden = true
             return chatCell
         case 1:
             let interactiveNewsCell = newsCollectionView.dequeueReusableCell(withReuseIdentifier: "interactiveNewsCellId", for: indexPath) as! InteractiveNewsCell
@@ -99,23 +121,20 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if indexPath.item != 4 {
-             return CGSize(width: self.newsCollectionView.frame.width - 30, height: 70)
+             return CGSize(width: self.newsCollectionView.frame.width - 30, height: 80)
         } else {
            return CGSize(width: self.newsCollectionView.frame.width - 60, height: 46)
         }
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return 10
-    }
     
 }
 

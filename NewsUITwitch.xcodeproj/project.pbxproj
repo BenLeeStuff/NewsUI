@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,12 @@
 		782C1154231951DC007E8471 /* SystemMessagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C1153231951DC007E8471 /* SystemMessagesCell.swift */; };
 		782C1156231951F4007E8471 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C1155231951F4007E8471 /* UserCell.swift */; };
 		782C115823195210007E8471 /* NoticeIssuedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C115723195210007E8471 /* NoticeIssuedCell.swift */; };
+		782C115A2319CA70007E8471 /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11592319CA70007E8471 /* ChatView.swift */; };
+		782C115C2319DD47007E8471 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C115B2319DD47007E8471 /* NewsViewController.swift */; };
+		782C115F2319E88C007E8471 /* InteractiveNewsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C115E2319E88C007E8471 /* InteractiveNewsView.swift */; };
+		782C11612319E8C4007E8471 /* SystemMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11602319E8C4007E8471 /* SystemMessagesView.swift */; };
+		782C11632319E909007E8471 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11622319E909007E8471 /* UserView.swift */; };
+		782C11652319E931007E8471 /* NoticeIssuedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11642319E931007E8471 /* NoticeIssuedView.swift */; };
 		78D948F22319319300C0204C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D948F12319319300C0204C /* AppDelegate.swift */; };
 		78D948F42319319300C0204C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D948F32319319300C0204C /* ViewController.swift */; };
 		78D948F72319319300C0204C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D948F52319319300C0204C /* Main.storyboard */; };
@@ -49,6 +55,12 @@
 		782C1153231951DC007E8471 /* SystemMessagesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessagesCell.swift; sourceTree = "<group>"; };
 		782C1155231951F4007E8471 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		782C115723195210007E8471 /* NoticeIssuedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeIssuedCell.swift; sourceTree = "<group>"; };
+		782C11592319CA70007E8471 /* ChatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatView.swift; sourceTree = "<group>"; };
+		782C115B2319DD47007E8471 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		782C115E2319E88C007E8471 /* InteractiveNewsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveNewsView.swift; sourceTree = "<group>"; };
+		782C11602319E8C4007E8471 /* SystemMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessagesView.swift; sourceTree = "<group>"; };
+		782C11622319E909007E8471 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		782C11642319E931007E8471 /* NoticeIssuedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeIssuedView.swift; sourceTree = "<group>"; };
 		78D948EE2319319300C0204C /* NewsUITwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsUITwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D948F12319319300C0204C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78D948F32319319300C0204C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -123,6 +135,18 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		782C115D2319E852007E8471 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				782C11592319CA70007E8471 /* ChatView.swift */,
+				782C115E2319E88C007E8471 /* InteractiveNewsView.swift */,
+				782C11602319E8C4007E8471 /* SystemMessagesView.swift */,
+				782C11622319E909007E8471 /* UserView.swift */,
+				782C11642319E931007E8471 /* NoticeIssuedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		78D948E52319319300C0204C = {
 			isa = PBXGroup;
 			children = (
@@ -148,10 +172,12 @@
 		78D948F02319319300C0204C /* NewsUITwitch */ = {
 			isa = PBXGroup;
 			children = (
+				782C115D2319E852007E8471 /* Views */,
 				782C114C23193F03007E8471 /* Cells */,
 				78D948F12319319300C0204C /* AppDelegate.swift */,
 				78D948F32319319300C0204C /* ViewController.swift */,
 				78D948F52319319300C0204C /* Main.storyboard */,
+				782C115B2319DD47007E8471 /* NewsViewController.swift */,
 				78D948F82319319400C0204C /* Assets.xcassets */,
 				78D948FA2319319400C0204C /* LaunchScreen.storyboard */,
 				78D948FD2319319400C0204C /* Info.plist */,
@@ -188,7 +214,6 @@
 				A181ECAF41421032CB00E78F /* Pods-NewsUITwitchUITests.debug.xcconfig */,
 				F15BF2C88C2E737A3FBFFB93 /* Pods-NewsUITwitchUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -413,12 +438,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				782C11612319E8C4007E8471 /* SystemMessagesView.swift in Sources */,
 				782C115823195210007E8471 /* NoticeIssuedCell.swift in Sources */,
 				782C1154231951DC007E8471 /* SystemMessagesCell.swift in Sources */,
 				78D948F42319319300C0204C /* ViewController.swift in Sources */,
+				782C115C2319DD47007E8471 /* NewsViewController.swift in Sources */,
 				78D948F22319319300C0204C /* AppDelegate.swift in Sources */,
+				782C115A2319CA70007E8471 /* ChatView.swift in Sources */,
+				782C115F2319E88C007E8471 /* InteractiveNewsView.swift in Sources */,
 				782C114E23193F14007E8471 /* ChatCell.swift in Sources */,
 				782C1152231951C9007E8471 /* InteractiveNewsCell.swift in Sources */,
+				782C11632319E909007E8471 /* UserView.swift in Sources */,
+				782C11652319E931007E8471 /* NoticeIssuedView.swift in Sources */,
 				782C11502319473B007E8471 /* Extensions.swift in Sources */,
 				782C1156231951F4007E8471 /* UserCell.swift in Sources */,
 			);
