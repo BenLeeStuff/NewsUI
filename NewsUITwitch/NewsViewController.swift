@@ -71,6 +71,18 @@ class NewsViewController: UIViewController {
         return v
     }()
     
+    let circleOverlay: UIView = {
+        let v = UIView()
+        v.backgroundColor = .white
+        return v
+    }()
+    
+    let actionButton: ActionButton = {
+        let b = ActionButton(type: .system)
+        b.layer.cornerRadius = 28
+        b.addTarget(self, action: #selector(actionButtonPressed), for: .touchUpInside)
+        return b
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,6 +117,12 @@ class NewsViewController: UIViewController {
 
         newsView.addSubview(noticeIssuedView)
         noticeIssuedView.anchor(top: newsButton.bottomAnchor, left: newsView.leftAnchor, bottom: nil, right: newsView.rightAnchor, paddingTop: (newsViewInitialHeight * 4) + 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: newsViewInitialHeight)
+        
+        newsView.addSubview(actionButton)
+        actionButton.anchor(top: nil, left: nil, bottom: newsView.bottomAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 43, paddingRight: 30, width: 58, height: 58)
+        
+        actionButton.alpha = 0
+        
     }
     
     @objc func newsButtonPressed() {
@@ -113,6 +131,7 @@ class NewsViewController: UIViewController {
         UIView.animate(withDuration: 0.6, animations: {
             self.newsButton.anchor(top: self.newsView.topAnchor, left: self.view.leftAnchor, bottom: nil, right: self.view.rightAnchor, paddingTop: 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 55)
             self.newsView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: self.newsViewTopAndBottomPadding, paddingLeft: 38, paddingBottom: self.newsViewTopAndBottomPadding, paddingRight: 38, width: 0, height: self.newsViewExpandedHeight - self.newsViewInitialHeight)
+            self.shadowView.anchor(top: self.view.topAnchor, left: self.view.leftAnchor, bottom: self.view.bottomAnchor, right: self.view.rightAnchor, paddingTop: self.newsViewTopAndBottomPadding + 4, paddingLeft: 38 + 4, paddingBottom: self.newsViewTopAndBottomPadding + 4, paddingRight: 38 + 4, width: 0, height: self.newsViewExpandedHeight - self.newsViewInitialHeight)
             UIView.animate(withDuration: 0.2, delay: 0, options: [], animations: {
                 self.newsButton.alpha = 0
             }, completion: { (true) in
@@ -125,8 +144,9 @@ class NewsViewController: UIViewController {
             print("news view expanded maybe idk")
             self.newsView.addSubview(self.chatView)
             self.chatView.alpha = 1
-            //self.chatView.anchor(top: self.newsButton.bottomAnchor, left: self.newsView.leftAnchor, bottom: nil, right: self.newsView.rightAnchor, paddingTop: self.innerViewAnimationStartTopPadding, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: self.newsViewInitialHeight)
             self.animateCellsToPopUp()
+            
+            self.popInActionButton()
         }
     }
     
@@ -144,28 +164,63 @@ class NewsViewController: UIViewController {
         }
     }
     
+    func popInActionButton() {
+        
+        actionButton.popIn(fromScale: 0, duration: 0.6, delay: 0.4) { (true) in
+//            self.actionButton.alpha = 1
+//            self.actionButton.arrowIcon.centerYAnchor.constraint(equalTo: self.actionButton.centerYAnchor, constant: 15).isActive = true
+//            self.actionButton.arrowIcon.centerXAnchor.constraint(equalTo: self.actionButton.centerXAnchor, constant: 15).isActive = true
+//            self.actionButton.arrowIcon.heightAnchor.constraint(equalToConstant: 21.8).isActive = true
+//            self.actionButton.arrowIcon.widthAnchor.constraint(equalToConstant: 22.7).isActive = true
+            print("actionButton Popped In")
+        }
+    }
+    
+    
     
     
     func animateCellsToPopUp() {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.6) {
             self.chatView.overlay.alpha = 0
             self.chatView.topAnchor.constraint(equalTo: self.newsButton.bottomAnchor, constant: 0).isActive = true
-            self.view.layoutIfNeeded()
             UIView.animate(withDuration: 0.5, delay: 0.2, options: [], animations: {
+                self.chatView.underlyingView.backgroundColor = .white
+
+            }, completion: nil)
+            self.view.layoutIfNeeded()
+            UIView.animate(withDuration: 0.6, delay: 0.2, options: [], animations: {
                 self.interactiveNewsView.overlay.alpha =  0
                 self.interactiveNewsView.topAnchor.constraint(equalTo: self.newsButton.bottomAnchor, constant: self.newsViewInitialHeight).isActive = true
-                self.view.layoutIfNeeded()
+                
                 UIView.animate(withDuration: 0.5, delay: 0.2, options: [], animations: {
+                    self.interactiveNewsView.underlyingView.backgroundColor = .white
+
+                }, completion: nil)
+
+                self.view.layoutIfNeeded()
+                UIView.animate(withDuration: 0.6, delay: 0.2, options: [], animations: {
                     self.systemMessagesView.overlay.alpha =  0
                     self.systemMessagesView.topAnchor.constraint(equalTo: self.newsButton.bottomAnchor, constant: self.newsViewInitialHeight * 2).isActive = true
-                    self.view.layoutIfNeeded()
+                    
                     UIView.animate(withDuration: 0.5, delay: 0.2, options: [], animations: {
+                        self.systemMessagesView.underlyingView.backgroundColor = .white
+                    }, completion: nil)
+                    
+                    self.view.layoutIfNeeded()
+                    UIView.animate(withDuration: 0.6, delay: 0.2, options: [], animations: {
                         self.userView.overlay.alpha =  0
                         self.userView.topAnchor.constraint(equalTo: self.newsButton.bottomAnchor, constant: self.newsViewInitialHeight * 3).isActive = true
-                        self.view.layoutIfNeeded()
+                        
                         UIView.animate(withDuration: 0.5, delay: 0.2, options: [], animations: {
+                            self.userView.underlyingView.backgroundColor = .white
+                        }, completion: nil)
+                        
+                        self.view.layoutIfNeeded()
+                        UIView.animate(withDuration: 0.6, delay: 0.2, options: [], animations: {
                             self.noticeIssuedView.overlay.alpha =  0
                             self.noticeIssuedView.topAnchor.constraint(equalTo: self.newsButton.bottomAnchor, constant: self.newsViewInitialHeight * 4 + 10).isActive = true
+                            
+                            
                             self.view.layoutIfNeeded()
                         }, completion: nil)
                     }, completion: nil)
@@ -173,6 +228,10 @@ class NewsViewController: UIViewController {
             }, completion: nil)
         }
 
+    }
+    
+    @objc func actionButtonPressed() {
+        self.actionButton.slideOutArrow()
     }
     
     func hideAllNewsViewContentViews() {

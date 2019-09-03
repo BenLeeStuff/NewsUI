@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1593BFA1DC456A1CD384BBF3 /* Pods_NewsUITwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63584962509CF5842863572 /* Pods_NewsUITwitch.framework */; };
 		2E0F24F0FE18BE53BEA63DB6 /* Pods_NewsUITwitchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8519E13260C8D9768B8A6DC6 /* Pods_NewsUITwitchUITests.framework */; };
+		7809B47D231ED80B00DD2819 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809B47C231ED80B00DD2819 /* ActionButton.swift */; };
 		782C114E23193F14007E8471 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C114D23193F14007E8471 /* ChatCell.swift */; };
 		782C11502319473B007E8471 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C114F2319473B007E8471 /* Extensions.swift */; };
 		782C1152231951C9007E8471 /* InteractiveNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C1151231951C9007E8471 /* InteractiveNewsCell.swift */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7809B47C231ED80B00DD2819 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
 		782C114D23193F14007E8471 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		782C114F2319473B007E8471 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		782C1151231951C9007E8471 /* InteractiveNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveNewsCell.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				782C11602319E8C4007E8471 /* SystemMessagesView.swift */,
 				782C11622319E909007E8471 /* UserView.swift */,
 				782C11642319E931007E8471 /* NoticeIssuedView.swift */,
+				7809B47C231ED80B00DD2819 /* ActionButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -452,6 +455,7 @@
 				782C11652319E931007E8471 /* NoticeIssuedView.swift in Sources */,
 				782C11502319473B007E8471 /* Extensions.swift in Sources */,
 				782C1156231951F4007E8471 /* UserCell.swift in Sources */,
+				7809B47D231ED80B00DD2819 /* ActionButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
