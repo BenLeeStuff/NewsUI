@@ -22,7 +22,7 @@ class NewsViewController: UIViewController {
         v.backgroundColor = .white
         v.layer.cornerRadius = 8
         v.clipsToBounds = true
-        v.layer.shadowColor = UIColor.rgb(red: 180, green: 180, blue: 202).cgColor
+        v.layer.shadowColor = UIColor.SHADOWCOLOR().cgColor
         v.layer.shadowRadius = 3
         v.layer.shadowOpacity = 1
         return v
@@ -118,6 +118,10 @@ class NewsViewController: UIViewController {
         newsView.addSubview(noticeIssuedView)
         noticeIssuedView.anchor(top: newsButton.bottomAnchor, left: newsView.leftAnchor, bottom: nil, right: newsView.rightAnchor, paddingTop: (newsViewInitialHeight * 4) + 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: newsViewInitialHeight)
         
+        newsView.addSubview(circleOverlay)
+        circleOverlay.anchor(top: nil, left: nil, bottom: newsView.bottomAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 43, paddingRight: 30, width: 58, height: 58)
+        circleOverlay.layer.cornerRadius = circleOverlay.frame.height / 2
+        
         newsView.addSubview(actionButton)
         actionButton.anchor(top: nil, left: nil, bottom: newsView.bottomAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 43, paddingRight: 30, width: 58, height: 58)
         
@@ -167,17 +171,9 @@ class NewsViewController: UIViewController {
     func popInActionButton() {
         
         actionButton.popIn(fromScale: 0, duration: 0.6, delay: 0.4) { (true) in
-//            self.actionButton.alpha = 1
-//            self.actionButton.arrowIcon.centerYAnchor.constraint(equalTo: self.actionButton.centerYAnchor, constant: 15).isActive = true
-//            self.actionButton.arrowIcon.centerXAnchor.constraint(equalTo: self.actionButton.centerXAnchor, constant: 15).isActive = true
-//            self.actionButton.arrowIcon.heightAnchor.constraint(equalToConstant: 21.8).isActive = true
-//            self.actionButton.arrowIcon.widthAnchor.constraint(equalToConstant: 22.7).isActive = true
             print("actionButton Popped In")
         }
     }
-    
-    
-    
     
     func animateCellsToPopUp() {
         UIView.animate(withDuration: 0.6) {
@@ -234,17 +230,16 @@ class NewsViewController: UIViewController {
         self.actionButton.slideOutArrow()
     }
     
+    func expandCircleOverlay() {
+    }
+    
+    
     func hideAllNewsViewContentViews() {
         chatView.alpha = 0
         interactiveNewsView.alpha = 0
         systemMessagesView.alpha = 0
         userView.alpha = 0
         noticeIssuedView.alpha = 0
-//        chatView.isHidden = true
-//        interactiveNewsView.isHidden = true
-//        systemMessagesView.isHidden = true
-//        userView.isHidden = true
-//        noticeIssuedView.isHidden = true
     }
 
 }

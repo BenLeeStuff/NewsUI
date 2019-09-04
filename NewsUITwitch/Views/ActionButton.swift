@@ -10,12 +10,6 @@ import UIKit
 
 class ActionButton: UIButton {
     
-    let baseLayer: UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "action.png"))
-        iv.layer.cornerRadius = 28
-        return iv
-    }()
-    
     let arrowIcon: UIImageView = {
         let iv = UIImageView(image: UIImage(named: "arrow.png")?.withRenderingMode(.alwaysOriginal))
         iv.contentMode = .scaleAspectFit
@@ -34,8 +28,7 @@ class ActionButton: UIButton {
     
     func setupViews() {
         self.clipsToBounds = true
-        addSubview(baseLayer)
-        baseLayer.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        backgroundColor = UIColor.ACTIONBUTTONBACKGROUNDCOLOR()
         addSubview(arrowIcon)
         arrowIcon.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 21.5, paddingLeft: 19.15, paddingBottom: 0, paddingRight: 0, width: 17.18, height: 16.58)
         
