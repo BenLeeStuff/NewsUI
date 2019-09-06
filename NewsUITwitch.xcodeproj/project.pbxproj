@@ -10,7 +10,6 @@
 		1593BFA1DC456A1CD384BBF3 /* Pods_NewsUITwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A63584962509CF5842863572 /* Pods_NewsUITwitch.framework */; };
 		2E0F24F0FE18BE53BEA63DB6 /* Pods_NewsUITwitchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8519E13260C8D9768B8A6DC6 /* Pods_NewsUITwitchUITests.framework */; };
 		7809B47D231ED80B00DD2819 /* ActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7809B47C231ED80B00DD2819 /* ActionButton.swift */; };
-		782B3946231F23F50035F7A7 /* ActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782B3945231F23F50035F7A7 /* ActionView.swift */; };
 		782C114E23193F14007E8471 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C114D23193F14007E8471 /* ChatCell.swift */; };
 		782C11502319473B007E8471 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C114F2319473B007E8471 /* Extensions.swift */; };
 		782C1152231951C9007E8471 /* InteractiveNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C1151231951C9007E8471 /* InteractiveNewsCell.swift */; };
@@ -23,6 +22,7 @@
 		782C11612319E8C4007E8471 /* SystemMessagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11602319E8C4007E8471 /* SystemMessagesView.swift */; };
 		782C11632319E909007E8471 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11622319E909007E8471 /* UserView.swift */; };
 		782C11652319E931007E8471 /* NoticeIssuedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 782C11642319E931007E8471 /* NoticeIssuedView.swift */; };
+		7870C3E82322268A00C99B32 /* ButtonDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7870C3E72322268A00C99B32 /* ButtonDescriptionView.swift */; };
 		78D948F22319319300C0204C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D948F12319319300C0204C /* AppDelegate.swift */; };
 		78D948F42319319300C0204C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78D948F32319319300C0204C /* ViewController.swift */; };
 		78D948F72319319300C0204C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 78D948F52319319300C0204C /* Main.storyboard */; };
@@ -52,7 +52,6 @@
 
 /* Begin PBXFileReference section */
 		7809B47C231ED80B00DD2819 /* ActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionButton.swift; sourceTree = "<group>"; };
-		782B3945231F23F50035F7A7 /* ActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionView.swift; sourceTree = "<group>"; };
 		782C114D23193F14007E8471 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		782C114F2319473B007E8471 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		782C1151231951C9007E8471 /* InteractiveNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractiveNewsCell.swift; sourceTree = "<group>"; };
@@ -65,6 +64,7 @@
 		782C11602319E8C4007E8471 /* SystemMessagesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessagesView.swift; sourceTree = "<group>"; };
 		782C11622319E909007E8471 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		782C11642319E931007E8471 /* NoticeIssuedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoticeIssuedView.swift; sourceTree = "<group>"; };
+		7870C3E72322268A00C99B32 /* ButtonDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDescriptionView.swift; sourceTree = "<group>"; };
 		78D948EE2319319300C0204C /* NewsUITwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsUITwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		78D948F12319319300C0204C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		78D948F32319319300C0204C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 				782C11622319E909007E8471 /* UserView.swift */,
 				782C11642319E931007E8471 /* NoticeIssuedView.swift */,
 				7809B47C231ED80B00DD2819 /* ActionButton.swift */,
-				782B3945231F23F50035F7A7 /* ActionView.swift */,
+				7870C3E72322268A00C99B32 /* ButtonDescriptionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -445,10 +445,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				782C11612319E8C4007E8471 /* SystemMessagesView.swift in Sources */,
+				7870C3E82322268A00C99B32 /* ButtonDescriptionView.swift in Sources */,
 				782C115823195210007E8471 /* NoticeIssuedCell.swift in Sources */,
 				782C1154231951DC007E8471 /* SystemMessagesCell.swift in Sources */,
 				78D948F42319319300C0204C /* ViewController.swift in Sources */,
-				782B3946231F23F50035F7A7 /* ActionView.swift in Sources */,
 				782C115C2319DD47007E8471 /* NewsViewController.swift in Sources */,
 				78D948F22319319300C0204C /* AppDelegate.swift in Sources */,
 				782C115A2319CA70007E8471 /* ChatView.swift in Sources */,

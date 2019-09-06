@@ -75,7 +75,6 @@ extension UIView {
         }
         layer.shadowRadius = radius
     }
-    
 }
 
 extension UIColor {

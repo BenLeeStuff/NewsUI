@@ -16,7 +16,9 @@ class NewsViewController: UIViewController {
     lazy var newsViewExpandedHeight = view.frame.height * 0.625
     lazy var newsViewTopAndBottomPadding = view.frame.height * 0.1875
     lazy var innerViewAnimationStartTopPadding = newsViewExpandedHeight * 0.45217
-    
+    let transparentCircleLayer = CAShapeLayer()
+    let solidCircleLayer = CAShapeLayer()
+
     let newsView: UIView = {
         let v = UIView()
         v.backgroundColor = .white
@@ -84,6 +86,36 @@ class NewsViewController: UIViewController {
         return b
     }()
     
+    let popOutButtonContainer: UIView = {
+        let v = UIView()
+        v.backgroundColor = .clear
+        return v
+    }()
+    
+    let babyButton: UIButton = {
+        let b = UIButton(type: .system)
+        b.setImage(UIImage(named: "baby.png")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        return b
+    }()
+    
+    let profileButton: UIButton = {
+        let b = UIButton(type: .system)
+        b.setImage(UIImage(named: "profile.png")?.withRenderingMode(.alwaysOriginal), for: .normal)
+        return b
+    }()
+    
+    let notifyColleaguesView: ButtonDescriptionView = {
+        let v = ButtonDescriptionView()
+        v.title = "Notify Colleagues"
+        return v
+    }()
+    
+    let informStudentsView: ButtonDescriptionView = {
+        let v = ButtonDescriptionView()
+        v.title = "Inform Students"
+        return v
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -119,14 +151,15 @@ class NewsViewController: UIViewController {
         noticeIssuedView.anchor(top: newsButton.bottomAnchor, left: newsView.leftAnchor, bottom: nil, right: newsView.rightAnchor, paddingTop: (newsViewInitialHeight * 4) + 15, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: newsViewInitialHeight)
         
         newsView.addSubview(circleOverlay)
-        circleOverlay.anchor(top: nil, left: nil, bottom: newsView.bottomAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 43, paddingRight: 30, width: 58, height: 58)
+        circleOverlay.anchor(top: nil, left: nil, bottom: newsView.bottomAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 43, paddingRight: 30, width: 58 / 2, height: 58 / 2)
         circleOverlay.layer.cornerRadius = circleOverlay.frame.height / 2
         
         newsView.addSubview(actionButton)
         actionButton.anchor(top: nil, left: nil, bottom: newsView.bottomAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 43, paddingRight: 30, width: 58, height: 58)
         
         actionButton.alpha = 0
-        
+        circleOverlay.alpha = 0
+        createCircleOverlayPath()
     }
     
     @objc func newsButtonPressed() {
@@ -149,8 +182,8 @@ class NewsViewController: UIViewController {
             self.newsView.addSubview(self.chatView)
             self.chatView.alpha = 1
             self.animateCellsToPopUp()
-            
             self.popInActionButton()
+            self.addPopoutButtonContainer()
         }
     }
     
@@ -223,16 +256,57 @@ class NewsViewController: UIViewController {
                 }, completion: nil)
             }, completion: nil)
         }
-
     }
     
     @objc func actionButtonPressed() {
         self.actionButton.slideOutArrow()
+        animateTransparentCircle()
+        popInTheButtonsThatAppearAfterTheActionButtonIsPressed()
+        animateSolidCircle()
+    }
+
+    func createCircleOverlayPath() {
+        let circularPath = UIBezierPath(arcCenter: CGPoint(x: actionButton.frame.origin.x - (actionButton.frame.width / 2), y: actionButton.frame.origin.y + (actionButton.frame.width / 2)), radius: 28, startAngle: 0, endAngle: 2 * .pi, clockwise: true)
+        transparentCircleLayer.path = circularPath.cgPath
+        transparentCircleLayer.lineWidth = 2.0
+        transparentCircleLayer.fillColor = UIColor.white.cgColor
+        transparentCircleLayer.opacity = 0.5
+        transparentCircleLayer.lineCap =  CAShapeLayerLineCap.round
+        transparentCircleLayer.position =  CGPoint(x: actionButton.frame.size.width / 2, y: actionButton.frame.size.width / 2)
+        
+        solidCircleLayer.path = circularPath.cgPath
+        solidCircleLayer.lineWidth = 2.0
+        solidCircleLayer.fillColor = UIColor.white.cgColor
+        solidCircleLayer.opacity = 0.96
+        solidCircleLayer.lineCap =  CAShapeLayerLineCap.round
+        solidCircleLayer.position =  CGPoint(x: actionButton.frame.size.width / 2, y: actionButton.frame.size.width / 2)
+        
+        circleOverlay.layer.addSublayer(transparentCircleLayer)
+        circleOverlay.layer.addSublayer(solidCircleLayer)
     }
     
-    func expandCircleOverlay() {
+    func animateTransparentCircle() {
+        circleOverlay.alpha = 1
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.duration = 0.5
+        scaleAnimation.fromValue = 0
+        scaleAnimation.toValue = 18
+        scaleAnimation.isRemovedOnCompletion = false
+        scaleAnimation.fillMode = CAMediaTimingFillMode.forwards
+        self.newsView.sendSubviewToBack(self.chatView)
+        transparentCircleLayer.add(scaleAnimation, forKey: "scale")
     }
     
+    func animateSolidCircle() {
+        let scaleAnimation = CABasicAnimation(keyPath: "transform.scale")
+        scaleAnimation.beginTime = CACurrentMediaTime() + 0.2
+        scaleAnimation.duration = 0.5
+        scaleAnimation.fromValue = 0
+        scaleAnimation.toValue = 18
+        scaleAnimation.isRemovedOnCompletion = false
+        scaleAnimation.fillMode = CAMediaTimingFillMode.forwards
+        solidCircleLayer.add(scaleAnimation, forKey: "scale")
+    }
     
     func hideAllNewsViewContentViews() {
         chatView.alpha = 0
@@ -241,5 +315,42 @@ class NewsViewController: UIViewController {
         userView.alpha = 0
         noticeIssuedView.alpha = 0
     }
-
+    
+    func addPopoutButtonContainer() {
+        newsView.addSubview(popOutButtonContainer)
+        popOutButtonContainer.anchor(top: nil, left: newsView.leftAnchor, bottom: actionButton.topAnchor, right: newsView.rightAnchor, paddingTop: 0, paddingLeft: 32, paddingBottom: 20, paddingRight: 32, width: 0, height: newsView.frame.height * 0.25)
+        
+        popOutButtonContainer.addSubview(babyButton)
+        babyButton.anchor(top: nil, left: nil, bottom: popOutButtonContainer.bottomAnchor, right: popOutButtonContainer.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        
+        popOutButtonContainer.addSubview(profileButton)
+        profileButton.anchor(top: popOutButtonContainer.topAnchor, left: nil, bottom: nil, right: popOutButtonContainer.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 50, height: 50)
+        
+        popOutButtonContainer.addSubview(informStudentsView)
+        informStudentsView.anchor(top: nil, left:  nil, bottom: popOutButtonContainer.bottomAnchor, right: babyButton.leftAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 10, paddingRight: 10, width: 0, height: 32)
+        
+        popOutButtonContainer.addSubview(notifyColleaguesView)
+        notifyColleaguesView.anchor(top: popOutButtonContainer.topAnchor, left: nil, bottom: nil, right: profileButton.leftAnchor, paddingTop: 10, paddingLeft: 0, paddingBottom: 0, paddingRight: 10, width: 0, height: 32)
+        
+        informStudentsView.isHidden = true
+        notifyColleaguesView.isHidden = true
+        babyButton.isHidden = true
+        profileButton.isHidden = true
+    }
+    
+    func popInTheButtonsThatAppearAfterTheActionButtonIsPressed() {
+        babyButton.isHidden = false
+        babyButton.popIn(fromScale: 0, duration: 0.5, delay: 0) { (true) in
+            print("babyButton popIn animation complete")
+            self.profileButton.isHidden = false
+            self.informStudentsView.isHidden = false
+            self.informStudentsView.popIn(fromScale: 0, duration: 0.5, delay: 0.0, completion: nil)
+            
+            
+            //self.profileButton.popIn(fromScale: 0, duration: 0.5, delay: 00, completion: nil)
+        }
+        
+        profileButton.popIn(fromScale: 0, duration: 0.5, delay: 0.2, completion: nil)
+        notifyColleaguesView.popIn(fromScale: 0, duration: 0.5, delay: 0.2, completion: nil)
+    }
 }
